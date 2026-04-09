@@ -26,10 +26,12 @@ let payload = {
 console.log("Payload being sent:");
 console.log(JSON.stringify(payload, null, 2));
 
+let params = new URLSearchParams(payload);
+
 let response = await fetch(ZAPIER_WEBHOOK_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params.toString(),
 });
 
 let responseBody = await response.text();
