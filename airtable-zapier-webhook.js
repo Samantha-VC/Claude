@@ -26,7 +26,7 @@ let payload = {
 console.log("Payload being sent:");
 console.log(JSON.stringify(payload, null, 2));
 
-let response = await remoteFetchAsync(ZAPIER_WEBHOOK_URL, {
+let response = await fetch(ZAPIER_WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
