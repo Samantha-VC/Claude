@@ -12,8 +12,8 @@
 //   "Ads Status"   - text string
 //   "Slack Channel" - text string
 
-const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/YOUR_ZAPIER_WEBHOOK_ID";
-const TABLE_NAME = "Your Table Name";
+const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/16798417/u7r7q4l/";
+const TABLE_NAME = "Clients";
 
 // ---------------------------------------------------------------------------
 
