@@ -23,16 +23,15 @@ let payload = {
     slack_channel: config.slack_channel,
 };
 
-console.log(`Sending data for: ${payload.full_name}`);
+console.log("Payload being sent:");
+console.log(JSON.stringify(payload, null, 2));
 
-let response = await fetch(ZAPIER_WEBHOOK_URL, {
+let response = await remoteFetchAsync(ZAPIER_WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
 });
 
-if (response.ok) {
-    console.log(`Success! Zapier responded with status ${response.status}.`);
-} else {
-    console.log(`Error: Zapier responded with status ${response.status}.`);
-}
+let responseBody = await response.text();
+console.log(`Status: ${response.status}`);
+console.log(`Response body: ${responseBody}`);
