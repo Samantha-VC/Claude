@@ -16,11 +16,11 @@ const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/16798417/u7r7q4
 let config = input.config();
 
 let payload = {
-    full_name: config.full_name,
-    email: config.email,
-    ads: config.ads,
-    ads_status: config.ads_status,
-    slack_channel: config.slack_channel,
+    full_name: (config.full_name || "").trim(),
+    email: (config.email || "").trim(),
+    ads: (config.ads || "").trim(),
+    ads_status: (config.ads_status || "").trim(),
+    slack_channel: (config.slack_channel || "").trim(),
 };
 
 console.log("Payload being sent:");
