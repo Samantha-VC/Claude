@@ -11,14 +11,14 @@
 :root {
   /* ---- Form container -------------------------------------------------- */
   --gf-form-max-width: 640px;
-  --gf-form-padding-y: 24px;
+  --gf-form-padding-y: 8px;
   --gf-form-padding-x: 24px;
 
   /* ---- Vertical rhythm (the big lever for wasted space) --------------- */
-  --gf-field-gap: 10px;          /* space between fields */
-  --gf-group-gap: 18px;          /* space between groups (e.g. before a new label block) */
-  --gf-option-gap: 4px;           /* space between radio / checkbox options */
-  --gf-label-gap: 6px;            /* space between a label and its input */
+  --gf-field-gap: 6px;           /* space between fields */
+  --gf-group-gap: 10px;          /* space between groups (e.g. before a new label block) */
+  --gf-option-gap: 2px;          /* space between radio / checkbox options */
+  --gf-label-gap: 4px;            /* space between a label and its input */
 
   /* ---- Typography ------------------------------------------------------ */
   --gf-font-size: 15px;
@@ -53,12 +53,12 @@
 /* Mobile — tighten everything to claw back vertical space ---------------- */
 @media (max-width: 480px) {
   :root {
-    --gf-form-padding-y: 12px;
+    --gf-form-padding-y: 4px;
     --gf-form-padding-x: 12px;
-    --gf-field-gap: 8px;
-    --gf-group-gap: 12px;
-    --gf-option-gap: 2px;
-    --gf-label-gap: 4px;
+    --gf-field-gap: 4px;
+    --gf-group-gap: 8px;
+    --gf-option-gap: 1px;
+    --gf-label-gap: 3px;
     --gf-font-size: 14px;
     --gf-line-height: 1.3;
     --gf-input-height: 38px;
@@ -76,10 +76,26 @@
 form.ghl-form,
 form {
   max-width: var(--gf-form-max-width);
-  padding: var(--gf-form-padding-y) var(--gf-form-padding-x);
+  padding: var(--gf-form-padding-y) var(--gf-form-padding-x) !important;
+  margin: 0 auto !important;
   font-size: var(--gf-font-size);
   line-height: var(--gf-line-height);
   color: var(--gf-text-color);
+}
+
+/* Kill the stray margin GHL adds to the first/last field so the form
+   actually starts and ends at --gf-form-padding-y, not 24-30px below it. */
+#_builder-form > div:first-child,
+.hl-app form > div:first-child,
+.ghl-question-set:first-child,
+.form-builder--item:first-child {
+  margin-top: 0 !important;
+}
+#_builder-form > div:last-child,
+.hl-app form > div:last-child,
+.ghl-question-set:last-child,
+.form-builder--item:last-child {
+  margin-bottom: 0 !important;
 }
 
 /* =========================================================================
