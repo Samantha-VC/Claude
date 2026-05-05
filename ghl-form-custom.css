@@ -1,0 +1,234 @@
+/* =========================================================================
+   GoHighLevel Form — Custom CSS (variables-driven)
+   -------------------------------------------------------------------------
+   Paste into: Form Builder → Styles → Advanced → Custom CSS
+   GHL injects this inside the form's <style>, so no <style> wrapper needed.
+
+   Tweak the values in :root once and every field/label/option follows.
+   The --gf-* prefix avoids collisions with GHL's internal variables.
+   ========================================================================= */
+
+:root {
+  /* ---- Form container -------------------------------------------------- */
+  --gf-form-max-width: 640px;
+  --gf-form-padding-y: 24px;
+  --gf-form-padding-x: 24px;
+
+  /* ---- Vertical rhythm (the big lever for wasted space) --------------- */
+  --gf-field-gap: 10px;          /* space between fields */
+  --gf-group-gap: 18px;          /* space between groups (e.g. before a new label block) */
+  --gf-option-gap: 4px;           /* space between radio / checkbox options */
+  --gf-label-gap: 6px;            /* space between a label and its input */
+
+  /* ---- Typography ------------------------------------------------------ */
+  --gf-font-size: 15px;
+  --gf-line-height: 1.35;
+  --gf-label-size: 14px;
+  --gf-label-weight: 600;
+  --gf-label-color: #111827;
+  --gf-text-color: #1f2937;
+  --gf-placeholder-color: #9ca3af;
+
+  /* ---- Inputs ---------------------------------------------------------- */
+  --gf-input-height: 40px;
+  --gf-input-padding-y: 8px;
+  --gf-input-padding-x: 12px;
+  --gf-input-radius: 6px;
+  --gf-input-border: 1px solid #d0d5dd;
+  --gf-input-border-focus: #349dff;
+  --gf-input-bg: #ffffff;
+  --gf-textarea-min-height: 80px;
+
+  /* ---- Radio / checkbox ------------------------------------------------ */
+  --gf-control-size: 16px;
+  --gf-control-gap: 8px;          /* gap between control dot and its text */
+
+  /* ---- Submit button --------------------------------------------------- */
+  --gf-btn-padding-y: 10px;
+  --gf-btn-padding-x: 18px;
+  --gf-btn-radius: 6px;
+  --gf-btn-margin-top: 16px;
+}
+
+/* Mobile — tighten everything to claw back vertical space ---------------- */
+@media (max-width: 480px) {
+  :root {
+    --gf-form-padding-y: 12px;
+    --gf-form-padding-x: 12px;
+    --gf-field-gap: 8px;
+    --gf-group-gap: 12px;
+    --gf-option-gap: 2px;
+    --gf-label-gap: 4px;
+    --gf-font-size: 14px;
+    --gf-line-height: 1.3;
+    --gf-input-height: 38px;
+    --gf-input-padding-y: 7px;
+    --gf-textarea-min-height: 64px;
+    --gf-btn-margin-top: 10px;
+  }
+}
+
+/* =========================================================================
+   Form container
+   ========================================================================= */
+#_builder-form,
+.hl-app form,
+form.ghl-form,
+form {
+  max-width: var(--gf-form-max-width);
+  padding: var(--gf-form-padding-y) var(--gf-form-padding-x);
+  font-size: var(--gf-font-size);
+  line-height: var(--gf-line-height);
+  color: var(--gf-text-color);
+}
+
+/* =========================================================================
+   Field rows — collapse the default GHL row margins into one variable.
+   GHL wraps each field in a div whose id starts with "field-" or in
+   .ghl-question-set / [data-q] depending on form type.
+   ========================================================================= */
+#_builder-form > div,
+.hl-app form > div,
+.ghl-question-set,
+[id^="field-"],
+[data-q],
+.form-builder--item {
+  margin: 0 0 var(--gf-field-gap) 0 !important;
+  padding: 0 !important;
+}
+
+/* Bold "section" labels that introduce a radio group get a bit more air */
+#_builder-form > div:has(> label:only-child),
+.ghl-question-set:has(> label:only-child) {
+  margin-top: var(--gf-group-gap) !important;
+}
+
+/* =========================================================================
+   Labels
+   ========================================================================= */
+label,
+.field-label,
+.ghl-question-set > label {
+  display: block;
+  font-size: var(--gf-label-size);
+  font-weight: var(--gf-label-weight);
+  color: var(--gf-label-color);
+  line-height: var(--gf-line-height);
+  margin: 0 0 var(--gf-label-gap) 0;
+}
+
+/* =========================================================================
+   Text inputs, textareas, selects
+   ========================================================================= */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="phone"],
+input[type="number"],
+input[type="url"],
+input[type="date"],
+select,
+.form-control,
+.custom-vue-select .vs__dropdown-toggle {
+  width: 100%;
+  height: var(--gf-input-height);
+  padding: var(--gf-input-padding-y) var(--gf-input-padding-x);
+  font-size: var(--gf-font-size);
+  line-height: var(--gf-line-height);
+  color: var(--gf-text-color);
+  background: var(--gf-input-bg);
+  border: var(--gf-input-border);
+  border-radius: var(--gf-input-radius);
+  box-sizing: border-box;
+}
+
+textarea,
+textarea.form-control {
+  width: 100%;
+  min-height: var(--gf-textarea-min-height);
+  padding: var(--gf-input-padding-y) var(--gf-input-padding-x);
+  font-size: var(--gf-font-size);
+  line-height: var(--gf-line-height);
+  color: var(--gf-text-color);
+  background: var(--gf-input-bg);
+  border: var(--gf-input-border);
+  border-radius: var(--gf-input-radius);
+  box-sizing: border-box;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--gf-placeholder-color);
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus {
+  outline: none;
+  border-color: var(--gf-input-border-focus);
+  box-shadow: 0 0 0 2px rgba(52, 157, 255, 0.15);
+}
+
+/* =========================================================================
+   Radio buttons & checkboxes — the biggest source of wasted vertical
+   space in the screenshot. Tighten line-height and per-option margin.
+   ========================================================================= */
+.ghl-form-radio,
+.ghl-form-checkbox,
+[class*="radio-option"],
+[class*="checkbox-option"],
+label:has(> input[type="radio"]),
+label:has(> input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: var(--gf-control-gap);
+  margin: 0 0 var(--gf-option-gap) 0 !important;
+  padding: 0 !important;
+  font-weight: 400;
+  font-size: var(--gf-font-size);
+  line-height: var(--gf-line-height);
+  color: var(--gf-text-color);
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: var(--gf-control-size);
+  height: var(--gf-control-size);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* =========================================================================
+   Submit / next / back buttons
+   ========================================================================= */
+button[type="submit"],
+.ghl-submit-btn,
+.ghl-footer-preview .ghl-submit-btn,
+.ghl-next-button,
+.ghl-back-button {
+  padding: var(--gf-btn-padding-y) var(--gf-btn-padding-x);
+  border-radius: var(--gf-btn-radius);
+  font-size: var(--gf-font-size);
+  line-height: var(--gf-line-height);
+  margin-top: var(--gf-btn-margin-top);
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  button[type="submit"],
+  .ghl-submit-btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================================
+   Errors (GHL renders .hl-error / .error-message under the field)
+   ========================================================================= */
+.hl-error,
+.error-message {
+  font-size: 12px;
+  line-height: 1.3;
+  margin-top: 2px;
+}
