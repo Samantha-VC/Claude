@@ -43,6 +43,7 @@
   /* ---- Radio / checkbox ------------------------------------------------ */
   --gf-control-size: 16px;
   --gf-control-gap: 8px;          /* gap between control dot and its text */
+  --gf-option-line-height: 1.2;   /* tighter than form line-height */
 
   /* ---- Submit button --------------------------------------------------- */
   --gf-btn-padding-y: 10px;
@@ -67,6 +68,7 @@
     --gf-input-padding-y: 7px;
     --gf-textarea-min-height: 64px;
     --gf-btn-margin-top: 10px;
+    --gf-option-line-height: 1.15;
   }
 }
 
@@ -205,7 +207,7 @@ label:has(> input[type="checkbox"]) {
   padding: 0 !important;
   font-weight: 400;
   font-size: var(--gf-font-size);
-  line-height: var(--gf-line-height);
+  line-height: var(--gf-option-line-height);
   color: var(--gf-text-color);
   cursor: pointer;
 }
