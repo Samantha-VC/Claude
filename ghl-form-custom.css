@@ -16,7 +16,7 @@
 
   /* ---- Vertical rhythm (the big lever for wasted space) --------------- */
   --gf-field-gap: 6px;           /* space between fields */
-  --gf-group-gap: 10px;          /* space between groups (e.g. before a new label block) */
+  --gf-group-gap: 0px;           /* extra space above a section label (radio/checkbox group) */
   --gf-option-gap: 2px;          /* space between radio / checkbox options */
   --gf-label-gap: 4px;            /* space between a label and its input */
 
@@ -56,7 +56,7 @@
     --gf-form-padding-y: 4px;
     --gf-form-padding-x: 12px;
     --gf-field-gap: 4px;
-    --gf-group-gap: 8px;
+    --gf-group-gap: 0px;
     --gf-option-gap: 1px;
     --gf-label-gap: 3px;
     --gf-font-size: 14px;
@@ -237,6 +237,25 @@ button[type="submit"],
   .ghl-submit-btn {
     width: 100%;
   }
+}
+
+/* =========================================================================
+   Override GHL default margins that aren't reachable via variables.
+   Kills the residual gap above radio/checkbox group labels (the spot
+   between the textarea and "Monthly Revenue" in the screenshot).
+   ========================================================================= */
+#_builder-form label,
+.ghl-question-set label,
+.form-builder--item label,
+.hl-app form label {
+  margin-top: 0 !important;
+}
+
+[class*="radio"],
+[class*="checkbox"],
+.ghl-form-radio,
+.ghl-form-checkbox {
+  margin-top: 0 !important;
 }
 
 /* =========================================================================
