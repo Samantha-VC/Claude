@@ -11,12 +11,13 @@
 :root {
   /* ---- Form container -------------------------------------------------- */
   --gf-form-max-width: 640px;
-  --gf-form-padding-y: 8px;
+  --gf-form-padding-top: 16px;
+  --gf-form-padding-bottom: 12px;
   --gf-form-padding-x: 24px;
 
   /* ---- Vertical rhythm (the big lever for wasted space) --------------- */
   --gf-field-gap: 6px;           /* space between fields */
-  --gf-group-gap: 0px;           /* extra space above a section label (radio/checkbox group) */
+  --gf-group-gap: 8px;           /* extra space above a section label (radio/checkbox group) */
   --gf-option-gap: 2px;          /* space between radio / checkbox options */
   --gf-label-gap: 4px;            /* space between a label and its input */
 
@@ -53,10 +54,11 @@
 /* Mobile — tighten everything to claw back vertical space ---------------- */
 @media (max-width: 480px) {
   :root {
-    --gf-form-padding-y: 4px;
+    --gf-form-padding-top: 12px;
+    --gf-form-padding-bottom: 8px;
     --gf-form-padding-x: 12px;
     --gf-field-gap: 4px;
-    --gf-group-gap: 0px;
+    --gf-group-gap: 6px;
     --gf-option-gap: 1px;
     --gf-label-gap: 3px;
     --gf-font-size: 14px;
@@ -76,7 +78,7 @@
 form.ghl-form,
 form {
   max-width: var(--gf-form-max-width);
-  padding: var(--gf-form-padding-y) var(--gf-form-padding-x) !important;
+  padding: var(--gf-form-padding-top) var(--gf-form-padding-x) var(--gf-form-padding-bottom) !important;
   margin: 0 auto !important;
   font-size: var(--gf-font-size);
   line-height: var(--gf-line-height);
@@ -295,9 +297,24 @@ form label:has(> input[type="checkbox"]) {
 }
 
 /* Submit button keeps its top margin. */
+/* Add breathing room above section labels that introduce a radio /
+   checkbox group, so the bold "Monthly Revenue:" label has visual
+   space above it and the preceding question feels balanced. */
+#_builder-form > *:has(input[type="radio"]),
+#_builder-form > *:has(input[type="checkbox"]),
+.hl-app form > *:has(input[type="radio"]),
+.hl-app form > *:has(input[type="checkbox"]),
+form > *:has(input[type="radio"]),
+form > *:has(input[type="checkbox"]) {
+  margin-top: var(--gf-group-gap) !important;
+}
+
+/* Submit button — explicit top margin survives the universal reset. */
 button[type="submit"],
 .ghl-submit-btn,
-.ghl-footer-preview .ghl-submit-btn {
+.ghl-footer-preview .ghl-submit-btn,
+form > *:last-child:has(button[type="submit"]),
+form > *:has(> button[type="submit"]) {
   margin-top: var(--gf-btn-margin-top) !important;
 }
 
