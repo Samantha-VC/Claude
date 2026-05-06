@@ -21,9 +21,9 @@
   --gf-label-gap: 4px;            /* space between a label and its input */
 
   /* ---- Typography ------------------------------------------------------ */
-  --gf-font-size: 15px;
+  --gf-font-size: 16px;
   --gf-line-height: 1.35;
-  --gf-label-size: 14px;
+  --gf-label-size: 16px;
   --gf-label-weight: 600;
   --gf-label-color: #111827;
   --gf-text-color: #1f2937;
@@ -240,22 +240,65 @@ button[type="submit"],
 }
 
 /* =========================================================================
-   Override GHL default margins that aren't reachable via variables.
-   Kills the residual gap above radio/checkbox group labels (the spot
-   between the textarea and "Monthly Revenue" in the screenshot).
+   Brute-force margin/padding reset.
+   GHL's actual field wrapper class varies and isn't always reachable by
+   the named selectors above, so we nuke vertical margins on every element
+   inside the form, then re-add ONLY the gaps we want via the rules below.
    ========================================================================= */
-#_builder-form label,
-.ghl-question-set label,
-.form-builder--item label,
-.hl-app form label {
+#_builder-form *,
+.hl-app form *,
+form * {
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-[class*="radio"],
-[class*="checkbox"],
-.ghl-form-radio,
-.ghl-form-checkbox {
-  margin-top: 0 !important;
+/* Re-add exactly the gaps we want, using the variables. */
+#_builder-form > *,
+.hl-app form > *,
+form > * {
+  margin-bottom: var(--gf-field-gap) !important;
+}
+#_builder-form > *:last-child,
+.hl-app form > *:last-child,
+form > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Field wrappers that are nested one level deeper (some GHL forms wrap
+   fields inside an inner container). */
+#_builder-form > * > *,
+.hl-app form > * > *,
+form > * > * {
+  margin-bottom: var(--gf-field-gap) !important;
+}
+#_builder-form > * > *:last-child,
+.hl-app form > * > *:last-child,
+form > * > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Label sits directly above its input with --gf-label-gap of space. */
+#_builder-form label,
+.hl-app form label,
+form label {
+  margin-bottom: var(--gf-label-gap) !important;
+}
+
+/* Radio / checkbox option rows keep their tight per-option gap. */
+#_builder-form [class*="radio"],
+#_builder-form [class*="checkbox"],
+.hl-app form [class*="radio"],
+.hl-app form [class*="checkbox"],
+form label:has(> input[type="radio"]),
+form label:has(> input[type="checkbox"]) {
+  margin-bottom: var(--gf-option-gap) !important;
+}
+
+/* Submit button keeps its top margin. */
+button[type="submit"],
+.ghl-submit-btn,
+.ghl-footer-preview .ghl-submit-btn {
+  margin-top: var(--gf-btn-margin-top) !important;
 }
 
 /* =========================================================================
