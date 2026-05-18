@@ -1,0 +1,90 @@
+/* Tighten vertical spacing in the LeadConnector booking form
+   Targets: gap above/below "Enter Details" heading and the gap
+   between the last form field and the "Schedule Meeting" button. */
+
+/* 1. Reduce the gap between the meeting info card and the "Enter Details" heading */
+.calendar-booking-page .meeting-details-card,
+.calendar-booking-page .selected-slot-info,
+.booking-widget .meeting-info,
+.confirm-details-wrapper {
+  margin-bottom: 12px !important;
+}
+
+/* 2. Tighten the "Enter Details" heading itself */
+.calendar-booking-page .enter-details,
+.calendar-booking-page .form-heading,
+.enter-details-text,
+h2.enter-details,
+.booking-form h2,
+.booking-form h3 {
+  margin-top: 12px !important;
+  margin-bottom: 12px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* 3. Reduce gap between the heading and the first input */
+.calendar-booking-page .form-section,
+.booking-form .form-fields,
+.input-fields-wrapper {
+  margin-top: 8px !important;
+  padding-top: 0 !important;
+}
+
+/* 4. Tighten spacing between form fields (optional, light touch) */
+.calendar-booking-page .input-wrapper,
+.booking-form .form-group,
+.form-field-wrapper,
+.input-group {
+  margin-bottom: 10px !important;
+}
+
+/* 5. Reduce the gap between the last field (phone) and the submit button */
+.calendar-booking-page .submit-button-wrapper,
+.booking-form .button-wrapper,
+.schedule-meeting-button-wrapper,
+.confirm-button-wrapper,
+button.schedule-meeting,
+button[type="submit"].btn-primary,
+.booking-form button[type="submit"] {
+  margin-top: 14px !important;
+}
+
+/* 6. Remove any extra top/bottom padding on the form container itself */
+.calendar-booking-page .booking-form,
+.booking-form,
+.calendar-form-container {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+/* 7. Mobile-specific tightening (the format shown in the screenshot) */
+@media (max-width: 640px) {
+  .calendar-booking-page .enter-details,
+  .enter-details-text,
+  .booking-form h2,
+  .booking-form h3 {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    font-size: 18px !important;
+  }
+
+  .calendar-booking-page .form-section,
+  .booking-form .form-fields,
+  .input-fields-wrapper {
+    margin-top: 4px !important;
+  }
+
+  .calendar-booking-page .submit-button-wrapper,
+  .schedule-meeting-button-wrapper,
+  button.schedule-meeting,
+  .booking-form button[type="submit"] {
+    margin-top: 10px !important;
+  }
+
+  .calendar-booking-page .meeting-details-card,
+  .confirm-details-wrapper {
+    margin-bottom: 8px !important;
+  }
+}
